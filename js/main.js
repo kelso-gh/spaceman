@@ -1,5 +1,5 @@
 /*----- constants -----*/
-const words [];
+const words = [];
 
 
 /*---- state variables ----*/
