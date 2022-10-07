@@ -1,0 +1,11 @@
+Spaceman 
+
+The game is initialized
+An unknown word needs to be generated and cached (and shown the the player)
+The player starts with 6 lives
+(If the player isn't playing, the number of guesses is null)
+The player is able to input a letter of their choice as a guess
+The guess is displayed
+If the player chooses wrong, spaceman loses a limb (the player loses 1 point/1 guess)
+If the player exceeds number of guesses (loses all limbs/points), return 'you lose'--the game ends and resets
+The player may guess the word once they've correctly guessed a letter--the game ends and resets
