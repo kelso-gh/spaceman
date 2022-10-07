@@ -3,7 +3,7 @@ const words = [];
 
 
 /*---- state variables ----*/
-let scores;
+let lives;
 let results; 
 let winner;
 
@@ -14,3 +14,10 @@ let winner;
 
 
 /*------- functions ------*/
+
+initialize();
+
+function initialize() {
+
+    render();
+};
