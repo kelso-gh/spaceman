@@ -1,25 +1,36 @@
-* 
+*  {
+    box-sizing: border-box;
+    font-family: 'Peralta', cursive;
+}
 
 body {
-    background-color: beige;
-}
+    margin: 0 auto;
+    height: 100vh;
+    font-family: 'Peralta', cursive;
+  }
 
 main {
-  display: grid;  
-}
 
-button:hover {
-    background-color: white;
-    color: tan;
-}
-
-#board {
-    display: grid;
-    justify-content: right;
-    border-style:groove;
 }
 
 h1 {
+    color: rgb(240,204,181);
     text-align: left;
-    color: rgb(143,157,133);
+    margin-left: 10vh
 }
+
+.alphabet {
+    display: inline-block;
+    float: right;
+    margin-right: 10vh;
+}
+
+.playbtn {
+    background-color: rgb(189,186,169);
+    color: beige;
+    display: flex;
+    align-items: center;
+    margin-left: 10vh;
+}
+
+

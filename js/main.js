@@ -1,5 +1,10 @@
 /*----- constants -----*/
-const words = [];
+const words = [
+    lotus,
+    peony,
+    daisy,
+    rose
+];
 
 
 /*---- state variables ----*/
@@ -11,6 +16,7 @@ let winner;
 /*-------- stored -------*/
 
 
+/*------ event listeners ------*/
 
 
 /*------- functions ------*/
