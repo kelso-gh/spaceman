@@ -3,23 +3,34 @@
     font-family: 'Peralta', cursive;
 }
 
+body {
+    margin: 0 auto;
+}
+
 h1 {
-    text-align: end;
     color: rgb(143,157,133);
+    text-align: center;
 }
 
 h2 {
     color: rgb(143,157,133);
+    text-align: center;
 }
 
 h3 {
     color: rgb(143,157,133);
+    display: flex;
+    justify-content: center;
 }
 /* div {
     border: 1px solid #ff0000;
 } */
 
-.alphabet {
+.spacemanEl {
+    background-repeat: ;
+}
+
+#alphabet {
     display: flex;
     justify-content: center;
 }
@@ -29,7 +40,7 @@ button {
     background-color: beige;
 }
 
-.playbtn {
+#playbtn {
     display: flex;
     justify-content: center;
 }

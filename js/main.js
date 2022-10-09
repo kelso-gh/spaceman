@@ -1,22 +1,31 @@
 /*----- constants -----*/
 const words = [
-    lotus,
-    peony,
-    daisy,
-    rose
+    spaceship,
+    asteroid,
+    mars,
+    venus,
+    jupiter
 ];
+
+const alphabet = [
+    
+];
+
+const maxNumberChances = 6;
 
 
 /*---- state variables ----*/
-let lives;
+let randomWord;
 let winner;
 
 
 /*-------- stored elements-------*/
-
+//let guessElement;
+//let letterEl;
 
 /*------ event listeners ------*/
-
+document.querySelector('stage').addEventListener('click');
+document.querySelector('startBtn').addEventListener('click');
 
 
 /*------- functions ------*/
