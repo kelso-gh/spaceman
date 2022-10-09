@@ -3,34 +3,33 @@
     font-family: 'Peralta', cursive;
 }
 
-body {
-    margin: 0 auto;
-    height: 100vh;
-    font-family: 'Peralta', cursive;
-  }
-
-main {
-
-}
-
 h1 {
-    color: rgb(240,204,181);
-    text-align: left;
-    margin-left: 10vh
+    text-align: end;
+    color: rgb(143,157,133);
 }
+
+h2 {
+    color: rgb(143,157,133);
+}
+
+h3 {
+    color: rgb(143,157,133);
+}
+/* div {
+    border: 1px solid #ff0000;
+} */
 
 .alphabet {
-    display: inline-block;
-    float: right;
-    margin-right: 10vh;
+    display: flex;
+    justify-content: center;
+}
+
+
+button {
+    background-color: beige;
 }
 
 .playbtn {
-    background-color: rgb(189,186,169);
-    color: beige;
     display: flex;
-    align-items: center;
-    margin-left: 10vh;
+    justify-content: center;
 }
-
-

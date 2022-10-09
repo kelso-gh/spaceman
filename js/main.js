@@ -9,14 +9,14 @@ const words = [
 
 /*---- state variables ----*/
 let lives;
-let results; 
 let winner;
 
 
-/*-------- stored -------*/
+/*-------- stored elements-------*/
 
 
 /*------ event listeners ------*/
+
 
 
 /*------- functions ------*/
