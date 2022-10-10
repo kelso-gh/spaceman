@@ -30,7 +30,7 @@ h3 {
     background-repeat: ;
 } */
 
-#alphabet {
+#key-container {
     display: flex;
     justify-content: center;
 }

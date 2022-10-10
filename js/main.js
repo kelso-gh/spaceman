@@ -4,26 +4,32 @@ const words = [
     'asteroid',
     'mars',
     'venus',
-    'jupiter'
+    'jupiter',
+    'alien',
+
 ];
 
 const maxWrong = 6;
 
 /*---- state variables ----*/
 let randomWord;
-let answer;
-let wrongGuesses; 
-
+let answer; 
+let wrongGuesses; //an array to hold all of the incorrect letters
+let guess;
+let gameStatus;
 
 
 /*-------- stored elements-------*/
-// const message = document.querySelector('');
 const livesEl = document.getElementById('lives');
-const playerguess = document.getElementById('playerguess');
+const playerGuess = document.getElementById('playerGuess');
+const keys = document.querySelectorAll('button');
+const msg = document.querySelector('.message');
 
-// /*------ event listeners ------*/
-// document.querySelector('stage').addEventListener('click');
-// document.querySelector('startBtn').addEventListener('click');
+// console.log(keys[0].innerText);
+
+
+/*------ event listeners ------*/
+
 
 
 /*------- functions ------*/
@@ -31,21 +37,27 @@ const playerguess = document.getElementById('playerguess');
 initialize();
 
 function initialize() {
-    const minimumIdx = 0;
+    wrongGuesses = [];
     const maxIdx = words.length - 1;
     const randomNum = Math.floor(Math.random() * maxIdx);
     randomWord = words[randomNum];
-    console.log(randomWord);
     answer = randomWord.split('').map(_ => '_');
-    wrongGuesses = 0;
-    livesEl.innerText = maxWrong - wrongGuesses;
-    for (let index = 0; index < answer.length; index++) {
-        const letter = answer[index];
-        const letterEl = document.createElement('span');
-        letterEl.innerText = letter;
-        playerguess.appendChild(letterEl);
-    } 
-    // render();
-};
+    gameStatus = null;
+   render();
+}
 
+function render() {
+    renderMessage();
+    playerGuess.textContent = answer.join('')
+}
+
+function renderMessage() {
+    if (gameStatus === 'W') {
+        msg.textContent = `Congradulations you won!`;
+    } else if (gameStatus === 'L') {
+        msg.textContent = `You're out in space! The answer was ${randomWord}`;
+    } else {
+        livesEl.innerText = `${maxWrong - wrongGuesses.length + 1} lives remain good luck`;
+    }
+}
 
