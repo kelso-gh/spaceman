@@ -7,21 +7,18 @@ const words = [
     jupiter
 ];
 
-const alphabet = [
-    
-];
-
-const maxNumberChances = 6;
 
 
 /*---- state variables ----*/
 let randomWord;
-let winner;
+let answer;
+let maxWrong; 
+let wrongGuesses; 
+
 
 
 /*-------- stored elements-------*/
-//let guessElement;
-//let letterEl;
+const message = document.querySelector('');
 
 /*------ event listeners ------*/
 document.querySelector('stage').addEventListener('click');
@@ -33,6 +30,10 @@ document.querySelector('startBtn').addEventListener('click');
 initialize();
 
 function initialize() {
-
+    randomWord = 0;
+    answer = '';
+    maxWrong = 6;
+    wrongGuesses = 0;
+      
     render();
 };
