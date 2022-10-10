@@ -29,7 +29,7 @@ const msg = document.querySelector('.message');
 
 
 /*------ event listeners ------*/
-
+document.getElementById('key-container').addEventListener('click', handleMove);
 
 
 /*------- functions ------*/
