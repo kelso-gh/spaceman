@@ -22,14 +22,15 @@ let gameStatus;
 /*-------- stored elements-------*/
 const livesEl = document.getElementById('lives');
 const playerGuess = document.getElementById('playerGuess');
-const keys = document.querySelectorAll('button');
 const msg = document.querySelector('.message');
-const parentEl = [...document.querySelectorAll('#key-container > div')];
-const playAgainbtn = document.querySelector('playbtn');
+const parentEl = [...document.querySelectorAll('key-container > button')];
+const playAgainbtn = document.querySelector('startBtn');
+console.log(parentEl);
+console.log(playAgainbtn);
 
 /*------ event listeners ------*/
 document.getElementById('key-container').addEventListener('click', handleMove);
-playAgainbtn.addEventListener('click', initialize);
+// playAgainbtn.addEventListener('click', initialize);
 
 
 
@@ -43,13 +44,14 @@ function initialize() {
     const randomNum = Math.floor(Math.random() * maxIdx);
     randomWord = words[randomNum];
     answer = randomWord.split('').map(_ => '_');
+    let guess = '';
     gameStatus = null;
    render();
 }
 
 function render() {
     renderMessage();
-    playerGuess.textContent = answer.join('')
+    playerGuess.textContent = answer.join('');
 }
 
 function renderMessage() {
@@ -62,9 +64,50 @@ function renderMessage() {
     }
 }
 
-// function handleMove(event) {
-//     if (event.target ===! event.currentTarget) {
-        
-//     }
-// }
+function renderBtn() {
+    letterBtn.forEach(function(btn){
+        const ltr = btn.textContent;
+        //if wrongGuesses includes ltr add classname of wrong
+       if (wrongGuesses.icludes(ltr)) {
+        btn.className = 'wrong'
+       } else if (guess.icludes(ltr)) {
+        btn.ClassName = "right"
+       } else {
+        btn.className = '';
+       }
+    })
+    playAgainbtn.style.visibility = gameStatus ? 'visible' : 'hidden';
+}
+
+function handleMove(event) {
+    const ltr = event.target.textContent;
+    console.log(ltr);
+    if (
+        gameStatus ||
+        //guard
+        !parentEl.includes(ltr) ||
+        wrongGuesses.includes(ltr) ||
+        guess.inclcudes(ltr)
+    ) return;
+
+    if (randomWord.includes(ltr)) {
+        //if guess is correct
+        randomWord.forEach(function(char, idx) {
+            if (char ==== ltr) guess[idx] = ltr
+        });
+    } else {
+        wrongGuesses.push(lrt)
+    } 
+    gameStatus = getGameStatus;
+    render();
+}
+
+//Minion robot that checks the game status 
+function getGameStatus() {
+    if (!guess.inclcudes('_')) return 'W';
+    //If wrongGuesses.length is > maxWrongGuesses
+    if (wrongGuesses.length > maxWrong) return 'L';
+    return null;
+}
+
 

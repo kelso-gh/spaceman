@@ -45,3 +45,11 @@ button {
     display: flex;
     justify-content: center;
 }
+
+.correct {
+ background-color: yellow;
+}
+
+.wrong {
+background-color: maroon;
+}
