@@ -13,8 +13,7 @@ const maxWrong = 6;
 
 /*---- state variables ----*/
 let randomWord;
-let answer; 
-let wrongGuesses; //an array to hold all of the incorrect letters
+let wrongGuesses;
 let guess;
 let gameStatus;
 
@@ -23,14 +22,13 @@ let gameStatus;
 const livesEl = document.getElementById('lives');
 const playerGuess = document.getElementById('playerGuess');
 const msg = document.querySelector('.message');
-const parentEl = [...document.querySelectorAll('key-container > button')];
-const playAgainbtn = document.querySelector('startBtn');
-console.log(parentEl);
-console.log(playAgainbtn);
+const parentEl = [...document.querySelectorAll('section > button')];
+const startBtn = document.getElementById('startBtn');
+
 
 /*------ event listeners ------*/
-document.getElementById('key-container').addEventListener('click', handleMove);
-// playAgainbtn.addEventListener('click', initialize);
+document.querySelector('section').addEventListener('click', handleMove);
+startBtn.addEventListener('click', initialize);
 
 
 
@@ -40,63 +38,63 @@ initialize();
 
 function initialize() {
     wrongGuesses = [];
-    const maxIdx = words.length - 1;
-    const randomNum = Math.floor(Math.random() * maxIdx);
-    randomWord = words[randomNum];
-    answer = randomWord.split('').map(_ => '_');
-    let guess = '';
+    const maxIdx = Math.floor(Math.random() * words.length);
+    randomWord = words[maxIdx].toUpperCase().split('');
+    guess = randomWord.map(ltr => ltr === ' ' ? ' ' : '_');
     gameStatus = null;
    render();
 }
 
 function render() {
     renderMessage();
-    playerGuess.textContent = answer.join('');
+    playerGuess.textContent = guess.join('');
+    renderBtn();
 }
 
 function renderMessage() {
     if (gameStatus === 'W') {
         msg.textContent = `Congradulations you won!`;
     } else if (gameStatus === 'L') {
-        msg.textContent = `You're out in space! The answer was ${randomWord}`;
+        msg.innerHTML = `You're out in space! The answer was ${randomWord.join('')}`;
     } else {
-        livesEl.innerText = `${maxWrong - wrongGuesses.length + 1} lives remain good luck`;
+        livesEl.textContent = `${maxWrong - wrongGuesses.length} lives remain good luck`;
     }
 }
 
 function renderBtn() {
-    letterBtn.forEach(function(btn){
+    parentEl.forEach(function(btn){
         const ltr = btn.textContent;
         //if wrongGuesses includes ltr add classname of wrong
-       if (wrongGuesses.icludes(ltr)) {
-        btn.className = 'wrong'
-       } else if (guess.icludes(ltr)) {
-        btn.ClassName = "right"
+       if (wrongGuesses.includes(ltr)) {
+        btn.className = 'wrong';
+       } else if (guess.includes(ltr)) {
+        btn.ClassName = 'right';
        } else {
         btn.className = '';
        }
-    })
-    playAgainbtn.style.visibility = gameStatus ? 'visible' : 'hidden';
+    });
+    startBtn.style.visibility = gameStatus ? 'visible' : 'hidden';
 }
 
 function handleMove(event) {
     const ltr = event.target.textContent;
     console.log(ltr);
+    console.log(guess);
     if (
         gameStatus ||
         //guard
-        !parentEl.includes(ltr) ||
+        !parentEl.includes(event.target) ||
         wrongGuesses.includes(ltr) ||
-        guess.inclcudes(ltr)
+        guess.includes(ltr)
     ) return;
 
     if (randomWord.includes(ltr)) {
         //if guess is correct
         randomWord.forEach(function(char, idx) {
-            if (char ==== ltr) guess[idx] = ltr
+            if (char === ltr) guess[idx] = ltr
         });
     } else {
-        wrongGuesses.push(lrt)
+        wrongGuesses.push(ltr)
     } 
     gameStatus = getGameStatus;
     render();
@@ -104,7 +102,7 @@ function handleMove(event) {
 
 //Minion robot that checks the game status 
 function getGameStatus() {
-    if (!guess.inclcudes('_')) return 'W';
+    if (!guess.includes('_')) return 'W';
     //If wrongGuesses.length is > maxWrongGuesses
     if (wrongGuesses.length > maxWrong) return 'L';
     return null;
