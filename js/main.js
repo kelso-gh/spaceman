@@ -24,12 +24,13 @@ const livesEl = document.getElementById('lives');
 const playerGuess = document.getElementById('playerGuess');
 const keys = document.querySelectorAll('button');
 const msg = document.querySelector('.message');
-
-// console.log(keys[0].innerText);
-
+const parentEl = [...document.querySelectorAll('#key-container > div')];
+const playAgainbtn = document.querySelector('playbtn');
 
 /*------ event listeners ------*/
 document.getElementById('key-container').addEventListener('click', handleMove);
+playAgainbtn.addEventListener('click', initialize);
+
 
 
 /*------- functions ------*/
@@ -60,4 +61,10 @@ function renderMessage() {
         livesEl.innerText = `${maxWrong - wrongGuesses.length + 1} lives remain good luck`;
     }
 }
+
+// function handleMove(event) {
+//     if (event.target ===! event.currentTarget) {
+        
+//     }
+// }
 
