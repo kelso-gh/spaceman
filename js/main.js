@@ -9,6 +9,16 @@ const words = [
 
 ];
 
+const IMGS = [
+    "imgs/spaceman.png/spaceman-0.jpg",
+    "imgs/spaceman.png/spaceman-1.jpg",
+    "imgs/spaceman.png/spaceman-2.jpg",
+    "imgs/spaceman.png/spaceman-3.jpg",
+    "imgs/spaceman.png/spaceman-4.jpg",
+    "imgs/spaceman.png/spaceman-5.jpg",
+    "imgs/spaceman.png/spaceman-6.jpg",
+];
+
 const maxWrong = 6;
 
 /*---- state variables ----*/
@@ -24,6 +34,7 @@ const playerGuess = document.getElementById('playerGuess');
 const msg = document.querySelector('.message');
 const parentEl = [...document.querySelectorAll('section > button')];
 const startBtn = document.getElementById('startBtn');
+const astronautImg = document.querySelector('imgs');
 
 
 /*------ event listeners ------*/
@@ -48,6 +59,7 @@ function initialize() {
 function render() {
     renderMessage();
     playerGuess.textContent = guess.join('');
+    astronautImg.src = `${IMGS[wrongGuesses.length]}`;
     renderBtn();
 }
 
