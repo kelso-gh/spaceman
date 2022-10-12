@@ -42,7 +42,7 @@ function initialize() {
     randomWord = words[maxIdx].toUpperCase().split('');
     guess = randomWord.map(ltr => ltr === ' ' ? ' ' : '_');
     gameStatus = null;
-   render();
+    render();
 }
 
 function render() {
@@ -55,55 +55,50 @@ function renderMessage() {
     if (gameStatus === 'W') {
         msg.textContent = `Congradulations you won!`;
     } else if (gameStatus === 'L') {
-        msg.innerHTML = `You're out in space! The answer was ${randomWord.join('')}`;
+        msg.textContent = `You're out in space! The answer was ${randomWord.join('')}`;
     } else {
         livesEl.textContent = `${maxWrong - wrongGuesses.length} lives remain good luck`;
     }
 }
 
 function renderBtn() {
-    parentEl.forEach(function(btn){
+    parentEl.forEach(function (btn) {
         const ltr = btn.textContent;
-        //if wrongGuesses includes ltr add classname of wrong
-       if (wrongGuesses.includes(ltr)) {
-        btn.className = 'wrong';
-       } else if (guess.includes(ltr)) {
-        btn.ClassName = 'right';
-       } else {
-        btn.className = '';
-       }
+        if (wrongGuesses.includes(ltr)) {
+            btn.className = 'wrong';
+        } else if (guess.includes(ltr)) {
+            btn.className = 'right';
+        } else {
+            btn.className = '';
+        }
     });
     startBtn.style.visibility = gameStatus ? 'visible' : 'hidden';
 }
 
 function handleMove(event) {
     const ltr = event.target.textContent;
-    console.log(ltr);
-    console.log(guess);
+    // console.log(ltr);
+    // console.log(guess);
     if (
         gameStatus ||
-        //guard
         !parentEl.includes(event.target) ||
         wrongGuesses.includes(ltr) ||
         guess.includes(ltr)
     ) return;
 
     if (randomWord.includes(ltr)) {
-        //if guess is correct
-        randomWord.forEach(function(char, idx) {
+        randomWord.forEach(function (char, idx) {
             if (char === ltr) guess[idx] = ltr
         });
     } else {
         wrongGuesses.push(ltr)
-    } 
-    gameStatus = getGameStatus;
+    }
+    gameStatus = getGameStatus();
     render();
 }
 
-//Minion robot that checks the game status 
 function getGameStatus() {
     if (!guess.includes('_')) return 'W';
-    //If wrongGuesses.length is > maxWrongGuesses
     if (wrongGuesses.length > maxWrong) return 'L';
     return null;
 }

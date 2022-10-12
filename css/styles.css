@@ -9,7 +9,7 @@ body {
 
 h1 {
     color: rgb(143,157,133);
-    text-align: center;
+    text-align:center;
 }
 
 h2 {
@@ -26,15 +26,17 @@ h3 {
     border: 1px solid #ff0000;
 } */
 
-/* .spacemanEl {
-    background-repeat: ;
-} */
-
-#key-container {
+.spacemanEl {
+    background-color:rgb(108, 183, 108);
+    border-style: dashed;
     display: flex;
     justify-content: center;
 }
 
+section {
+    display: flex;
+    justify-content: center;
+}
 
 button {
     background-color: beige;
@@ -47,9 +49,15 @@ button {
 }
 
 .right {
- background-color: yellow;
+ background-color: rgb(108, 183, 108);
 }
 
 .wrong {
-background-color: maroon;
+background-color: rgb(74, 58, 58);
 }
+
+img {
+    width: 250px;   
+    height: auto;
+}
+
