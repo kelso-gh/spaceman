@@ -49,6 +49,7 @@ initialize();
 
 function initialize() {
     wrongGuesses = [];
+    msg.classList.add('hide');
     const maxIdx = Math.floor(Math.random() * words.length);
     randomWord = words[maxIdx].toUpperCase().split('');
     guess = randomWord.map(ltr => ltr === ' ' ? ' ' : '_');
@@ -57,20 +58,21 @@ function initialize() {
 }
 
 function render() {
-    renderMessage();
     playerGuess.textContent = guess.join('');
     astronautImg.src = `${IMGS[wrongGuesses.length]}`;
+    renderMessage();
     renderBtn();
 }
 
 function renderMessage() {
     if (gameStatus === 'W') {
         msg.textContent = `Congradulations you won!`;
+        msg.classList.remove('hide');
     } else if (gameStatus === 'L') {
         msg.textContent = `You're out in space! The answer was ${randomWord.join('')}`;
-    } else {
-        livesEl.textContent = `${maxWrong - wrongGuesses.length} lives remain good luck`;
+        msg.classList.remove('hide');
     }
+    livesEl.textContent = `${maxWrong - wrongGuesses.length} lives remain good luck`;
 }
 
 function renderBtn() {
@@ -89,8 +91,6 @@ function renderBtn() {
 
 function handleMove(event) {
     const ltr = event.target.textContent;
-    // console.log(ltr);
-    // console.log(guess);
     if (
         gameStatus ||
         !parentEl.includes(event.target) ||
@@ -111,7 +111,7 @@ function handleMove(event) {
 
 function getGameStatus() {
     if (!guess.includes('_')) return 'W';
-    if (wrongGuesses.length > maxWrong) return 'L';
+    if (wrongGuesses.length === maxWrong) return 'L';
     return null;
 }
 

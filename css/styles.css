@@ -70,3 +70,7 @@ background-color: rgb(74, 58, 58);
     display: flex;
     justify-content: center;
 }
+
+.hide {
+    display: none;
+}
